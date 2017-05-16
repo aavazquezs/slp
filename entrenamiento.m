@@ -18,9 +18,13 @@ while (i<=iteraciones)
     %disp(sprintf('Y -> %f \n',Y));
     %----------------------------------
     if(Y ~= T(j))
-      for k = 1:m
-        W(k) = W(k)+ alpha*T(j)*X(j,k);
-      endfor;
+      %vectorized form
+      delta_w = alpha*T(j)*X(j,:);
+      W = W + delta_w;
+      %unvertorized form
+      %for k = 1:m
+      %  W(k) = W(k)+ alpha*T(j)*X(j,k);
+      %endfor;
       %mostrando W---------------------
       %disp('Mostrando W: ')
       %disp(W);
